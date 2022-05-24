@@ -9,7 +9,7 @@ from flask import Flask, jsonify, abort, make_response
 APP = Flask(__name__)
 MASCOTS = NULL
 # Load the data
-with open('data.json', 'r') as file_handle:
+with open('data.json', 'r', encoding="utf8") as file_handle:
     MASCOTS = json.load(file_handle)
 
 
