@@ -2,13 +2,15 @@
 """
 mascot: a microservice for serving mascot data
 """
+from asyncio.windows_events import NULL
 import json
 from flask import Flask, jsonify, abort, make_response
 
 APP = Flask(__name__)
-
+MASCOTS = NULL
 # Load the data
-MASCOTS = json.load(open('data.json', 'r'))
+with open('data.json', 'r') as file_handle:
+    MASCOTS = json.load(file_handle)
 
 
 @APP.route('/', methods=['GET'])
